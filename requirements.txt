@@ -8,3 +8,7 @@ python-dotenv
 pydantic
 kafka-python
 sentence-transformers
+langchain-huggingface
+langchain-chroma
+pypdf
+python-multipart
