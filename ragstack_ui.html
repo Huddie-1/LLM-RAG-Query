@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -908,7 +907,8 @@
     const dot = document.getElementById('statusDot');
     const txt = document.getElementById('statusText');
     try {
-      const res = await fetch(`${API_BASE}/health`, { signal: AbortSignal.timeout(3000) });
+      // 10s timeout — HuggingFace Spaces can be slow to respond
+      const res = await fetch(`${API_BASE}/health`, { signal: AbortSignal.timeout(10000) });
       if (res.ok) {
         dot.className = 'dot';
         txt.textContent = 'API Online';
@@ -919,7 +919,7 @@
     }
   }
   checkHealth();
-  setInterval(checkHealth, 15000);
+  setInterval(checkHealth, 30000);
 
   // ─── Sidebar (mobile drawer) ───
   function toggleSidebar() {
@@ -1115,8 +1115,8 @@
       msg.innerHTML = `
         <div class="avatar ai">RS</div>
         <div class="error-bubble">
-          ⚠ Could not reach API at <code>localhost:8000</code>.<br>
-          Run: <code>uvicorn main:app --reload</code>
+          ⚠ Could not reach the API at <code>${API_BASE}</code>.<br>
+          Check that your HuggingFace Space is running.
         </div>`;
       messagesInner.appendChild(msg);
       scrollToBottom();
