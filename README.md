@@ -1,3 +1,12 @@
+---
+title: RAGStack GPT
+emoji: ⚡
+colorFrom: blue
+colorTo: indigo
+sdk: docker
+pinned: false
+---
+
 # 📦 RAGStack GPT — Intelligent Query Engine
 
 > A production-grade Retrieval-Augmented Generation (RAG) system that lets you upload private documents and query them using a large language model — powered by Groq, LangChain, ChromaDB, and FastAPI.
