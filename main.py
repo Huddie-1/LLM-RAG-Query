@@ -1,5 +1,6 @@
 from fastapi import FastAPI, File, UploadFile
 from fastapi.middleware.cors import CORSMiddleware
+from fastapi.responses import FileResponse
 from pydantic import BaseModel
 from rag_engine import get_answer
 from mcp import generate_mcp
@@ -30,6 +31,11 @@ app.add_middleware(
 class QueryRequest(BaseModel):
     question: str
     user_id: str = "anonymous"
+
+
+@app.get("/")
+def serve_ui():
+    return FileResponse("ragstack_ui.html")
 
 
 @app.post("/query")
